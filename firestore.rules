@@ -1,0 +1,88 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    function isAdmin() {
+      // Either use { role: "admin" } or { admin: true } in custom claims
+      return request.auth != null
+        && (request.auth.token.role == "admin" || request.auth.token.admin == true);
+    }
+    function nowTs() {
+      return request.time;
+    }
+
+    // --- P E T S ---
+    match /pets/{petId} {
+      // Everyone can read
+      allow get, list: if true;
+
+      // Only admins can create/update/delete pets
+      allow create, update, delete: if isAdmin()
+        && request.resource.data.keys().hasOnly([
+          'name','species','breed','age','color','status','photoURL','createdAt'
+        ])
+        && request.resource.data.name is string
+        && request.resource.data.species is string
+        && request.resource.data.status in ['available','pending','adopted']
+        && request.resource.data.age is int
+        && request.resource.data.createdAt is timestamp;
+
+      // Admins may set createdAt on create; prevent tampering on update
+      allow update: if isAdmin()
+        && resource.data.createdAt == request.resource.data.createdAt;
+    }
+
+    // --- U S E R S ---
+    match /users/{uid} {
+      // Users can read their own user doc; admins can read all
+      allow get: if isAdmin() || (isSignedIn() && request.auth.uid == uid);
+      allow list: if isAdmin();
+
+      // Users can create their own base profile; admins can create anyone
+      allow create: if (isSignedIn() && request.auth.uid == uid) || isAdmin();
+
+      // Users can update ONLY their own non-privileged fields; admins can update all
+      allow update: if isAdmin()
+        || (isSignedIn() && request.auth.uid == uid
+            && !( 'role' in request.resource.data.diff(resource.data).affectedKeys() ) );
+
+      // Only admins can delete users docs
+      allow delete: if isAdmin();
+    }
+
+    // --- A D O P T I O N   R E Q U E S T S ---
+    // (flat collection version)
+    match /adoptionRequests/{reqId} {
+      // Everyone can read requests (or restrict to admins if you prefer)
+      allow get, list: if true;
+
+      // Only the signed-in owner can create their own request
+      allow create: if isSignedIn()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['petId','uid','message','createdAt'])
+        && request.resource.data.petId is string
+        && request.resource.data.message is string
+        && request.resource.data.createdAt is timestamp;
+
+      // Only the owner can update their own request; admins can too
+      allow update: if (isSignedIn() && request.auth.uid == resource.data.uid) || isAdmin();
+
+      // Owner or admin can delete
+      allow delete: if (isSignedIn() && request.auth.uid == resource.data.uid) || isAdmin();
+    }
+
+    // --- (If you chose subcollection version) ---
+    match /pets/{petId}/requests/{reqId} {
+      allow get, list: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['uid','message','createdAt'])
+        && request.resource.data.message is string
+        && request.resource.data.createdAt is timestamp;
+      allow update, delete: if (isSignedIn() && request.auth.uid == resource.data.uid) || isAdmin();
+    }
+  }
+}
