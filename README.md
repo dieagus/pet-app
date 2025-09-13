@@ -22,16 +22,14 @@ A modern React application for pet adoption with a responsive design and functio
 - **Empty States**: Helpful messages when no pets match filters
 - **Detailed Pet Cards**: Rich information including photos, descriptions, and pet details
 
-## 🛠 Technologies Used
+## Technologies Used
 
-- **React 19.1.1**: Modern functional components with hooks
-- **React Router DOM**: Client-side routing and navigation
-- **CSS Modules**: Scoped styling with modern CSS features
-- **PropTypes**: Runtime type checking for components
-- **Responsive Design**: Mobile-first approach with breakpoints
-- **Modern CSS**: CSS Grid, Flexbox, custom properties, animations
+- **React 19.1.1**
+- **React Router DOM**
+- **CSS Modules**
+- **Firebase/Firestore Emulators**
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -62,7 +60,7 @@ src/
 - **SearchAndFilter**: filtering interface
 
 
-## 🚀 Getting Started
+## Getting Started
 
 1. **Install Dependencies**
    ```bash

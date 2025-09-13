@@ -37,7 +37,7 @@ const HomePage = () => {
             <header className={styles.header}>
                 <div className={styles.container}>
                     <div className={styles.logo}>
-                        <h1>🐾 PetConnect</h1>
+                        <h1> PetConnect</h1>
                     </div>
                     <nav className={styles.nav}>
                         <Link to="/browse" className={styles.navLink}>Browse Pets</Link>
@@ -48,7 +48,7 @@ const HomePage = () => {
                 </div>
             </header>
 
-            {/* hero section */}
+            {/* random section with routing buttons */}
             <section className={styles.hero}>
                 <div className={styles.container}>
                     <div className={styles.heroContent}>
@@ -56,8 +56,8 @@ const HomePage = () => {
                             Find Your Perfect <span className={styles.highlight}>Furry Friend</span>
                         </h1>
                         <p className={styles.heroSubtitle}>
-                            Connect with loving pets looking for their forever homes.
-                            Discover companions that will bring joy, love, and endless memories to your life.
+                            Connect with loving pets!
+                            Discover companions that will bring joy and love!
                         </p>
                         <div className={styles.heroActions}>
                             <Link to="/browse" className={styles.primaryBtn}>
@@ -82,7 +82,7 @@ const HomePage = () => {
             <section className={styles.featured}>
                 <div className={styles.container}>
                     <h2 className={styles.sectionTitle}>Featured Pets</h2>
-                    <p className={styles.sectionSubtitle}>Meet some of our amazing pets looking for homes</p>
+                    <p className={styles.sectionSubtitle}>Meet some of our pets looking for homes</p>
                     <div className={styles.petGrid}>
                         {featuredPets.map(pet => (
                             <FeaturedPetCard key={pet.id} pet={pet} />
@@ -132,9 +132,6 @@ const HomePage = () => {
                             <Link to="/help">Help Center</Link>
                         </div>
                     </div>
-                    <div className={styles.footerBottom}>
-                        <p>&copy; 2024 PetConnect. All rights reserved.</p>
-                    </div>
                 </div>
             </footer>
         </div>
@@ -151,7 +148,7 @@ const FeaturedPetCard = ({ pet }) => (
         <div className={styles.petInfo}>
             <h3 className={styles.petName}>{pet.name}</h3>
             <p className={styles.petBreed}>{pet.breed}</p>
-            <p className={styles.petLocation}>📍 {pet.location}</p>
+            <p className={styles.petLocation}> {pet.location}</p>
             <Link to={`/pet/${pet.id}`} className={styles.petViewBtn}>
                 View Details
             </Link>
@@ -159,6 +156,7 @@ const FeaturedPetCard = ({ pet }) => (
     </div>
 );
 
+//define featured pet card props
 FeaturedPetCard.propTypes = {
     pet: PropTypes.shape({
         id: PropTypes.number.isRequired,

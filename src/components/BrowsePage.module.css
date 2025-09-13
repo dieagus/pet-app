@@ -1,6 +1,6 @@
 /* BrowsePage.module.css */
 
-/* CSS Custom Properties */
+/* used chatgpt to generate css files for browsepage and homepage*/
 .browsePage {
     --primary-color: #ff6b6b;
     --secondary-color: #4ecdc4;
@@ -519,111 +519,8 @@
     }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .filtersContainer {
-        gap: 1rem;
-    }
 
-    .filters {
-        flex-direction: column;
-    }
-
-    .filterSelect {
-        width: 100%;
-    }
-
-    .searchContainer {
-        max-width: 100%;
-    }
-
-    .petsGrid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .petCard {
-        max-width: 100%;
-    }
-
-    .petActions {
-        flex-direction: column;
-    }
-
-    .pagination {
-        gap: 0.25rem;
-    }
-
-    .paginationBtn,
-    .paginationNumber {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.9rem;
-    }
-
-    .pageTitle {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-
-    .header {
-        padding: 1.5rem 0;
-    }
-
-    .filtersSection {
-        padding: 1.5rem 0;
-    }
-
-    .petsSection {
-        padding: 1.5rem 0;
-    }
-
-    .petInfo {
-        padding: 1rem;
-    }
-
-    .petImageContainer {
-        height: 200px;
-    }
-
-    .pageTitle {
-        font-size: 1.8rem;
-    }
-
-    .pageSubtitle {
-        font-size: 1rem;
-    }
-
-    .loadingContent h2 {
-        font-size: 1.5rem;
-    }
-
-    .loadingContent p {
-        font-size: 1rem;
-    }
-
-    .emptyState {
-        padding: 3rem 1rem;
-    }
-
-    .emptyIcon {
-        font-size: 3rem;
-    }
-
-    .emptyState h2 {
-        font-size: 1.5rem;
-    }
-
-    .emptyState p {
-        font-size: 1rem;
-    }
-}
-
-/* Additional animations for better UX */
+/* additional animations for better UX */
 .petCard:nth-child(1) {
     animation-delay: 0.1s;
 }
@@ -672,7 +569,7 @@
     outline-offset: 2px;
 }
 
-/* Print styles */
+/* print styles */
 @media print {
 
     .filtersSection,
