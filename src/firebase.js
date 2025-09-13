@@ -3,7 +3,7 @@ import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
 import { getAuth, connectAuthEmulator } from 'firebase/auth';
 import { getStorage, connectStorageEmulator } from 'firebase/storage';
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// api config
 const firebaseConfig = {
   apiKey: "AIzaSyB1hZ4a81t2RuFpDWRFmSPM7obOZJbMpCo",
   authDomain: "petprofiles-a36d8.firebaseapp.com",
@@ -19,11 +19,12 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 const storage = getStorage(app);
 
-// Use window.location to satisfy ESLint's no-restricted-globals
+// connect to emulators if local
 if (window.location.hostname === 'localhost') {
   connectFirestoreEmulator(db, '127.0.0.1', 8080);
   connectAuthEmulator(auth, 'http://127.0.0.1:9099');
   connectStorageEmulator(storage, '127.0.0.1', 9199);
 }
 
+// export apps
 export { app, db, auth, storage };

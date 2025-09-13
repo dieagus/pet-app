@@ -33,7 +33,7 @@ const HomePage = () => {
 
     return (
         <div className={styles.homePage}>
-            {/* Navigation Header */}
+            {/* nav bar */}
             <header className={styles.header}>
                 <div className={styles.container}>
                     <div className={styles.logo}>
@@ -48,7 +48,7 @@ const HomePage = () => {
                 </div>
             </header>
 
-            {/* Hero Section */}
+            {/* hero section */}
             <section className={styles.hero}>
                 <div className={styles.container}>
                     <div className={styles.heroContent}>
@@ -78,7 +78,7 @@ const HomePage = () => {
                 </div>
             </section>
 
-            {/* Featured Pets Section */}
+            {/* featured pets section */}
             <section className={styles.featured}>
                 <div className={styles.container}>
                     <h2 className={styles.sectionTitle}>Featured Pets</h2>
@@ -96,7 +96,6 @@ const HomePage = () => {
                 </div>
             </section>
 
-            {/* Call to Action Section */}
             <section className={styles.cta}>
                 <div className={styles.container}>
                     <div className={styles.ctaContent}>
@@ -142,7 +141,7 @@ const HomePage = () => {
     );
 };
 
-// Featured Pet Card Component
+// definition for featured pet cards
 const FeaturedPetCard = ({ pet }) => (
     <div className={styles.petCard}>
         <div className={styles.petImageContainer}>

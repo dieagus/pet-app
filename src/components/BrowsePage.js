@@ -14,7 +14,7 @@ const BrowsePage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [petsPerPage] = useState(9);
 
-    // Mock data representing database items
+    // data representing database items for testing
     const mockPets = [
         {
             id: 1,
@@ -22,7 +22,7 @@ const BrowsePage = () => {
             breed: "Golden Retriever",
             age: 3,
             image: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&h=400&fit=crop&crop=face",
-            description: "Friendly and energetic golden retriever who loves playing fetch and swimming. Great with kids and other pets.",
+            description: "Friendly and energetic golden retriever who loves playing fetch and swimming.",
             location: "San Francisco, CA",
             type: "Dog",
             gender: "Male",
@@ -35,7 +35,7 @@ const BrowsePage = () => {
             breed: "Persian Cat",
             age: 2,
             image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=400&fit=crop&crop=face",
-            description: "Beautiful and calm Persian cat with long silky fur. Perfect lap cat who enjoys quiet environments.",
+            description: "Beautiful and calm Persian cat with long silky fur",
             location: "Los Angeles, CA",
             type: "Cat",
             gender: "Female",
@@ -48,7 +48,7 @@ const BrowsePage = () => {
             breed: "German Shepherd",
             age: 4,
             image: "https://images.unsplash.com/photo-1551717743-49959800b1f6?w=400&h=400&fit=crop&crop=face",
-            description: "Intelligent and loyal German Shepherd. Well-trained and great for active families who enjoy outdoor activities.",
+            description: "Intelligent and loyal German Shepherd.",
             location: "New York, NY",
             type: "Dog",
             gender: "Male",
@@ -61,7 +61,7 @@ const BrowsePage = () => {
             breed: "Labrador Mix",
             age: 1,
             image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400&h=400&fit=crop&crop=face",
-            description: "Young and playful Labrador mix. Full of energy and loves learning new tricks. Perfect for first-time dog owners.",
+            description: "Young and playful Labrador mix. Full of energy and loves learning new tricks.",
             location: "Chicago, IL",
             type: "Dog",
             gender: "Female",
@@ -74,7 +74,7 @@ const BrowsePage = () => {
             breed: "Maine Coon",
             age: 5,
             image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=400&fit=crop&crop=face",
-            description: "Gentle giant Maine Coon with a friendly personality. Gets along well with children and other pets.",
+            description: "Gentle giant Maine Coon with a friendly personality.",
             location: "Seattle, WA",
             type: "Cat",
             gender: "Male",
@@ -87,7 +87,7 @@ const BrowsePage = () => {
             breed: "Bulldog",
             age: 6,
             image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&h=400&fit=crop&crop=face",
-            description: "Calm and gentle bulldog who loves relaxing and short walks. Great companion for apartment living.",
+            description: "Calm and gentle bulldog who loves relaxing and short walks.",
             location: "Miami, FL",
             type: "Dog",
             gender: "Male",
@@ -100,7 +100,7 @@ const BrowsePage = () => {
             breed: "Siamese",
             age: 3,
             image: "https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=400&h=400&fit=crop&crop=face",
-            description: "Talkative and social Siamese cat. Very intelligent and forms strong bonds with their human family.",
+            description: "Talkative and social Siamese cat. Very intelligent.",
             location: "Austin, TX",
             type: "Cat",
             gender: "Female",
@@ -113,7 +113,7 @@ const BrowsePage = () => {
             breed: "Beagle",
             age: 2,
             image: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=400&h=400&fit=crop&crop=face",
-            description: "Curious and friendly beagle with a great nose for adventure. Loves exploring and meeting new people.",
+            description: "Curious and friendly beagle with a great nose for adventure.",
             location: "Denver, CO",
             type: "Dog",
             gender: "Male",
@@ -126,7 +126,7 @@ const BrowsePage = () => {
             breed: "British Shorthair",
             age: 4,
             image: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400&h=400&fit=crop&crop=face",
-            description: "Elegant British Shorthair with a calm demeanor. Independent but affectionate with her favorite humans.",
+            description: "Elegant British Shorthair with a calm demeanor.",
             location: "Boston, MA",
             type: "Cat",
             gender: "Female",
@@ -139,7 +139,7 @@ const BrowsePage = () => {
             breed: "Rottweiler",
             age: 7,
             image: "https://images.unsplash.com/photo-1567752881298-894bb81f9379?w=400&h=400&fit=crop&crop=face",
-            description: "Mature and well-behaved Rottweiler. Despite his size, he's gentle and protective of his family.",
+            description: "Mature and well-behaved Rottweiler.",
             location: "Phoenix, AZ",
             type: "Dog",
             gender: "Male",
@@ -152,7 +152,7 @@ const BrowsePage = () => {
             breed: "Ragdoll",
             age: 1,
             image: "https://images.unsplash.com/photo-1615789591457-74a63395c990?w=400&h=400&fit=crop&crop=face",
-            description: "Fluffy and docile Ragdoll kitten. Known for going limp when picked up, hence the breed name.",
+            description: "Fluffy and docile Ragdoll kitten.",
             location: "Portland, OR",
             type: "Cat",
             gender: "Female",
@@ -165,7 +165,7 @@ const BrowsePage = () => {
             breed: "Border Collie",
             age: 5,
             image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop&crop=face",
-            description: "Highly intelligent Border Collie who needs mental stimulation. Perfect for active families who enjoy training.",
+            description: "Highly intelligent Border Collie who needs mental stimulation.",
             location: "Nashville, TN",
             type: "Dog",
             gender: "Female",
@@ -174,11 +174,10 @@ const BrowsePage = () => {
         }
     ];
 
-    // Simulate loading data
+    // loading data
     useEffect(() => {
         const loadPets = async () => {
             setLoading(true);
-            // Simulate API call delay
             await new Promise(resolve => setTimeout(resolve, 1500));
             setPets(mockPets);
             setFilteredPets(mockPets);
@@ -188,11 +187,11 @@ const BrowsePage = () => {
         loadPets();
     }, []);
 
-    // Filter and search functionality
+    // filter and search 
     useEffect(() => {
         let filtered = pets;
 
-        // Search by name
+        // search by name
         if (searchTerm) {
             filtered = filtered.filter(pet =>
                 pet.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -200,12 +199,12 @@ const BrowsePage = () => {
             );
         }
 
-        // Filter by breed
+        // filter by breed
         if (selectedBreed !== 'all') {
             filtered = filtered.filter(pet => pet.breed === selectedBreed);
         }
 
-        // Filter by age
+        // filter by age
         if (selectedAge !== 'all') {
             if (selectedAge === 'young') {
                 filtered = filtered.filter(pet => pet.age <= 2);
@@ -216,7 +215,7 @@ const BrowsePage = () => {
             }
         }
 
-        // Sort pets
+        // sort pets
         filtered.sort((a, b) => {
             switch (sortBy) {
                 case 'name':
@@ -231,13 +230,13 @@ const BrowsePage = () => {
         });
 
         setFilteredPets(filtered);
-        setCurrentPage(1); // Reset to first page when filters change
+        setCurrentPage(1); // reset to first page when filters change
     }, [pets, searchTerm, selectedBreed, selectedAge, sortBy]);
 
-    // Get unique breeds for filter dropdown
+    // get unique breeds for filter dropdown
     const breeds = [...new Set(pets.map(pet => pet.breed))].sort();
 
-    // Pagination logic
+    // pagination logic
     const indexOfLastPet = currentPage * petsPerPage;
     const indexOfFirstPet = indexOfLastPet - petsPerPage;
     const currentPets = filteredPets.slice(indexOfFirstPet, indexOfLastPet);
@@ -283,7 +282,7 @@ const BrowsePage = () => {
                             <span className={styles.searchIcon}>🔍</span>
                         </div>
 
-                        {/* Filters */}
+                        {/* filters */}
                         <div className={styles.filters}>
                             <select
                                 value={selectedBreed}
@@ -355,7 +354,7 @@ const BrowsePage = () => {
     );
 };
 
-// Pet Card Component
+// pet card component
 const PetCard = ({ pet }) => (
     <div className={styles.petCard}>
         <div className={styles.petImageContainer}>
@@ -410,7 +409,7 @@ PetCard.propTypes = {
     }).isRequired
 };
 
-// Loading State Component
+// loading state component
 const LoadingState = () => (
     <div className={styles.loadingState}>
         <div className={styles.container}>
@@ -435,7 +434,7 @@ const LoadingState = () => (
     </div>
 );
 
-// Empty State Component
+// empty state component
 const EmptyState = ({ searchTerm }) => (
     <div className={styles.emptyState}>
         <div className={styles.emptyIcon}>🐾</div>
@@ -459,7 +458,7 @@ EmptyState.propTypes = {
     searchTerm: PropTypes.string.isRequired
 };
 
-// Pagination Component
+// pagination component
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     const pages = [];
     const maxVisiblePages = 5;
